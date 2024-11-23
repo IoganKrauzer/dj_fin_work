@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        Navigation
+        {% endblock %}
+    </title>
+</head>
+<body>
+{% block body %}
+<br><br><br><br><br><br>
+<ul>
+    <li><a href="{% url 'myauth:login' %}"><h2>Login</h2></a></li>
+    <br>
+    <li><a href="{% url 'myauth:register' %}"><h2>Register</h2></a></li>
+    <br>
+    <li><a href="{% url 'recipapp:recipes-list' %}"><h2>Show all recipes</h2></a></li>
+    <br>
+    <li><a href="{% url 'recipapp:create_recipe' %}"><h2>Create recipe</h2></a></li>
+</ul>
+{% endblock %}
+</body>
+</html>

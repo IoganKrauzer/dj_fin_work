@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title     %}
+Recipe #{{ object.pk }} details
+{% endblock %}
+
+{% block body%}
+<h1>Recipe #{{ object.pk }}</h1>
+<div>
+    <p>Recipe by: {% firstof recipe.author.first_name recipe.author.username %}</p>
+        <p>Category: {{ recipe.category }}</p>
+        <p>Description: {{ recipe.description }}</p>
+        <p>Cooking steps: {{ recipe.cooking_steps }}</p>
+        <p>Cooking time: {{ recipe.cooking_time }}</p>
+        <p>Created date: (<code>{{ recipe.created_date }}</code>)</p>
+</div>
+<br>
+<div>
+  <a href="{% url 'recipapp:recipe_update' pk=recipe.pk %}">Update recipe</a>
+</div>
+<br>
+<div>
+  <a href="{% url 'recipapp:recipe_delete' pk=recipe.pk %}">Delete product</a>
+</div>
+<br>
+<div>
+  <a href="{% url 'recipapp:recipes-list' %}">Back to recipes</a>
+</div>
+<br>
+<div>
+  <a href="{% url 'recipapp:index' %}">Back to home page</a>
+</div>
+{% endblock %}

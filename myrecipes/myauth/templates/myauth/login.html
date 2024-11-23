@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block body %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form>
+<br>
+<div>
+    <a href="{% url 'myauth:register' %}">Registration</a>
+</div>
+<br>
+<div>
+    <a href="{% url 'recipapp:index' %}">Back home</a>
+</div>
+{% endblock%}

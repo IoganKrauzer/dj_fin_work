@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Update recipe
+{% endblock %}
+
+{% block body%}
+<h1>Update recipe</h1>
+<div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">
+            Update
+        </button>
+    </form>
+</div>
+<br>
+<div>
+    <a href="{% url 'recipapp:recipe_detail' pk=object.pk %}">
+        Back to recipe #{{ object.pk }}
+    </a>
+</div>
+
+{% endblock %}

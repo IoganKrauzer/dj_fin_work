@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+ About me
+{% endblock %}
+
+{% block body %}
+<h1>User info</h1>
+{% if user.is_authenticated %}
+<h2>Detail</h2>
+<p>User: {{ user.username }}</p>
+<p>Firstname: {{ user.first_name }}</p>
+<p>Lastname: {{ user.last_name }}</p>
+<p>Email: {{ user.email }}</p>
+<p>Bio: {{ user.profile.bio }}</p>
+{% else %}
+<h2>User is anonymous</h2>
+{% endif %}
+
+<br>
+<div>
+    <a href="{% url 'myauth:logout' %}">Logout</a>
+</div>
+<br>
+<div>
+    <a href="{% url 'recipapp:index' %}">Back home</a>
+</div>
+{% endblock %}

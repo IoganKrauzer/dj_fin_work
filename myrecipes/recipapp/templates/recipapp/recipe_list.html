@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title%}
+Recipes List
+{% endblock %}
+
+{% block body%}
+<h1>Recipes:</h1>
+
+{% if object_list %}
+<div>
+    {% for recipe in object_list %}
+    <div>
+        <p><a href="{% url 'recipapp:recipe_detail' pk=recipe.pk %}">
+            Details # {{ recipe.pk }}</a></p>
+        <p>Recipe by: {% firstof recipe.author.first_name recipe.author.username %}</p>
+        <p>Category: {{ recipe.category }}</p>
+        <p>Description: {{ recipe.description|slice:':20' }}...</p>
+        <p>Created date: (<code>{{ recipe.created_date }}</code>)</p>
+
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<h3>No recipes yet</h3>
+{% endif %}
+<br>
+<div>
+  <a href="{% url 'recipapp:index' %}">Back to home page</a>
+</div>
+{% endblock %}
